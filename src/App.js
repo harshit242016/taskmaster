@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AuthProvider, { useAuth } from './AuthContext';
+import Login from './components/login';
+import Dashboard from './components/dashboard';
 
 function App() {
+  const { isAuthenticated } = useAuth();
+console.log(isAuthenticated());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route
+            path="/dashboard"
+            element={isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={!isAuthenticated() ? <Login /> : <Navigate to="/dashboard" />}
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
