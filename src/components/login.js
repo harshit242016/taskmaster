@@ -11,7 +11,7 @@ const Login = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('/api/authenticate', values);
+      const response = await axios.post('https://taskmaster-five.vercel.app/api/authenticate', values);
       const { token } = response.data;
       login(token);
       navigate(0); // Redirect to dashboard page
