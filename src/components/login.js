@@ -14,7 +14,7 @@ const Login = () => {
       const response = await axios.post('http://localhost:5000/api/authenticate', values);
       const { token } = response.data;
       login(token);
-      navigate('/dashboard'); // Redirect to dashboard page
+      navigate(0); // Redirect to dashboard page
     } catch (error) {
       setError('Invalid email or password');
     }
