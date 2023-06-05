@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const users = require('../utils/mockdata');
+const users = require('../../utils/mockdata');
 
 const app = express();
 app.use(cors());
@@ -40,4 +40,5 @@ app.get('/',(req,res) => {
     res.status(200).json({message : "App is running"});
 })
 
-app.listen(5000, () => console.log('Server started on port 5000'));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server started on port ${port}`));
