@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const users = require('../../utils/mockdata');
+const users = require('./src/utils/mockdata');
 
 const app = express();
 app.use(cors());
