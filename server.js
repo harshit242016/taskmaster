@@ -43,5 +43,5 @@ app.get('/',(req,res) => {
     res.status(200).json({message : "App is running"});
 })
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Server started on port ${port}`));
