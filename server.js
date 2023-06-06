@@ -7,6 +7,8 @@ const users = require('../../utils/mockdata');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static('public'))
+app.use('/', express.static(path.join(__dirname, 'build')))
 
 const SECRET_KEY = 'mysecretkey';
 
