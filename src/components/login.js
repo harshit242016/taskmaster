@@ -11,7 +11,8 @@ const Login = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/authenticate', values);
+      const serverUrl = process.env.SERVER_URL;
+      const response = await axios.post(`${serverUrl}/api/authenticate`, values);
       const { token } = response.data;
       login(token);
       navigate(0); // Redirect to dashboard page
